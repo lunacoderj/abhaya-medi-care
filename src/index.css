@@ -9,7 +9,7 @@
   }
   
   body {
-    @apply text-brand-charcoal bg-brand-pale antialiased;
+    @apply text-brand-charcoal bg-brand-pale antialiased overflow-x-hidden;
   }
 }
 
