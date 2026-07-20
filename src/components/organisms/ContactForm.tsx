@@ -54,7 +54,6 @@ Message: ${data.message}`;
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 bg-brand-pale p-6 md:p-8 rounded-3xl shadow-clay-card border-0">
       <FormField
         label="Full Name"
-        name="name"
         placeholder="Enter your full name"
         icon={User}
         error={errors.name?.message}
@@ -64,7 +63,6 @@ Message: ${data.message}`;
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <FormField
           label="Mobile Number"
-          name="phone"
           type="tel"
           placeholder="e.g. 9876543210"
           icon={Phone}
@@ -74,7 +72,6 @@ Message: ${data.message}`;
         
         <FormField
           label="Email Address (Optional)"
-          name="email"
           type="email"
           placeholder="your.email@example.com"
           icon={Mail}
@@ -86,7 +83,6 @@ Message: ${data.message}`;
       <FormField
         as="textarea"
         label="Your Message"
-        name="message"
         placeholder="How can we help you today?"
         error={errors.message?.message}
         {...register('message')}
