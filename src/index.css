@@ -8,8 +8,12 @@
     --glass-border: rgba(255, 255, 255, 0.15);
   }
   
+  html, body, #root {
+    @apply overflow-x-hidden max-w-[100vw];
+  }
+  
   body {
-    @apply text-brand-charcoal bg-brand-pale antialiased overflow-x-hidden;
+    @apply text-brand-charcoal bg-brand-pale antialiased;
   }
 }
 
