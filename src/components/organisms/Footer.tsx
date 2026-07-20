@@ -19,12 +19,9 @@ export function Footer() {
           {/* Brand Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="bg-brand-teal text-brand-charcoal p-1.5 rounded-lg">
-                <Activity size={24} />
+              <div className="bg-white p-1 rounded-xl">
+                <img src="/logo.png" alt="Abhaya Medicare" className="h-10 md:h-12 w-auto object-contain" />
               </div>
-              <span className="font-bold text-2xl text-white tracking-tight">
-                Abhaya <span className="text-brand-teal">Medicare</span>
-              </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed pr-4">
               {clinicData.description}

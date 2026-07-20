@@ -37,15 +37,22 @@ export function HomePage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6 }}
-              className="relative aspect-square md:aspect-auto md:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
+              className="relative w-full aspect-square md:aspect-auto md:h-[500px] flex items-center justify-center"
             >
-              <img 
-                src="/images/abhaya-medicare-mvp-colony-visakhapatnam-diagnostic-centres-c1ngd2fnm6.jpg" 
-                alt="Clinic Interior" 
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-brand-blue/10"></div>
+              <div className="absolute inset-0 bg-brand-teal/20 blur-[80px] rounded-full mix-blend-multiply" />
+              
+              <motion.div
+                className="relative z-10 w-[85%] h-[85%] bg-brand-pale rounded-[3rem] p-4 shadow-clay-card border-0 transform"
+              >
+                <div className="w-full h-full rounded-[2.5rem] overflow-hidden border-4 border-white bg-white shadow-inner">
+                  <img 
+                    src="/hero.png" 
+                    alt="Abhaya Medicare Professional Team" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </motion.div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 50 }}

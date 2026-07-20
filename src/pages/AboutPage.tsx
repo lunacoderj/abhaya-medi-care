@@ -26,20 +26,45 @@ export function AboutPage() {
             items={[{ label: "About Us" }]} 
             className="mb-8"
           />
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl"
-          >
-            <h4 className="text-brand-teal font-semibold tracking-wider mb-3 uppercase text-sm">About {clinicData.shortName}</h4>
-            <h1 className="text-4xl md:text-5xl font-bold text-brand-charcoal mb-6">
-              Redefining Diagnostic Excellence
-            </h1>
-            <p className="text-xl text-brand-gray leading-relaxed">
-              A journey of 12 years in providing accurate, compassionate diagnostic care.
-            </p>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-2xl"
+            >
+              <h4 className="text-brand-teal font-bold tracking-widest mb-4 uppercase text-sm">About {clinicData.shortName}</h4>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-charcoal mb-6 leading-[1.1] tracking-tight">
+                Redefining <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-teal">Diagnostic</span> Excellence
+              </h1>
+              <p className="text-xl text-brand-charcoal/80 leading-relaxed font-medium">
+                A journey of 12 years in providing accurate, compassionate diagnostic care. We put patients first.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative w-full aspect-square md:aspect-[4/3] flex items-center justify-center"
+            >
+              <div className="absolute inset-0 bg-brand-orange/20 blur-[100px] rounded-full mix-blend-multiply" />
+              
+              <motion.div
+                className="relative z-10 w-full max-w-[90%] h-[90%] bg-brand-pale rounded-[3rem] p-4 shadow-clay-card border-0 transform"
+              >
+                <div className="w-full h-full rounded-[2.5rem] overflow-hidden border-4 border-white bg-white shadow-inner relative group">
+                  <div className="absolute inset-0 bg-brand-blue/20 mix-blend-overlay z-10 group-hover:opacity-0 transition-opacity duration-500" />
+                  <img 
+                    src="/hero.png" 
+                    alt="Abhaya Medicare Team" 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    loading="eager"
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

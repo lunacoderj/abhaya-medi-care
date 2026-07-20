@@ -45,12 +45,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="bg-brand-blue text-white p-1.5 rounded-lg group-hover:bg-brand-teal transition-colors">
-              <Activity size={24} />
-            </div>
-            <span className="font-bold text-xl md:text-2xl text-brand-charcoal tracking-tight">
-              Abhaya <span className="text-brand-blue">Medicare</span>
-            </span>
+            <img src="/logo.png" alt="Abhaya Medicare" className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
           </Link>
 
           {/* Desktop Nav */}
