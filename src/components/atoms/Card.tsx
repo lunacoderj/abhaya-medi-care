@@ -7,9 +7,9 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-brand-pale shadow-clay-card border-0",
-        elevated: "bg-white shadow-md border border-brand-gray/5",
-        clay: "bg-brand-pale shadow-clay border-0",
+        default: "bg-white shadow-soft border border-brand-gray/10",
+        elevated: "bg-white shadow-float border border-brand-gray/10",
+        clay: "bg-white shadow-soft border border-brand-gray/10", // Kept class name for compatibility, updated style
         glass: "glass",
         glassDark: "glass-dark",
       },

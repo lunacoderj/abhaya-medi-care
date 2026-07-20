@@ -14,6 +14,12 @@ import {
 export interface ServiceTest {
   name: string;
   description: string;
+  image?: string;
+  purpose?: string[];
+  sampleRequired?: string;
+  preparation?: string;
+  recommendedFor?: string[];
+  reportTime?: string;
 }
 
 export interface Service {
@@ -41,15 +47,76 @@ export const servicesData: Service[] = [
     turnaroundTime: "Same day (within 4-6 hours)",
     process: "A standard venous blood sample is collected from your arm by our trained phlebotomists. The process is quick and minimally invasive.",
     tests: [
-      { name: "Blood Sugar (FBS)", description: "Measures blood glucose levels after an overnight fast. Crucial for diagnosing and monitoring diabetes." },
-      { name: "Blood Sugar (PPBS)", description: "Measures blood glucose levels exactly 2 hours after a meal to see how the body handles carbohydrates." },
-      { name: "Blood Sugar (RBS)", description: "Random blood sugar test taken at any time of day to check for severe diabetic fluctuations." },
-      { name: "GTT", description: "Glucose Tolerance Test measures the body's response to sugar to diagnose prediabetes or gestational diabetes." },
-      { name: "Fasting", description: "Baseline glucose reading before consuming the glucose drink for the GTT." },
-      { name: "1st Hour", description: "Glucose reading taken one hour after consuming the glucose drink." },
-      { name: "2nd Hour", description: "Glucose reading taken two hours after consuming the glucose drink to ensure insulin is working properly." },
-      { name: "Serum Creatinine", description: "A key indicator of kidney function. High levels suggest the kidneys aren't filtering waste efficiently." },
-      { name: "Blood Urea", description: "Measures the amount of urea nitrogen in your blood, another critical marker for kidney and liver health." }
+      { 
+        name: "Blood Sugar (FBS)", 
+        description: "Measures fasting blood glucose levels. Essential for screening and diagnosing diabetes.",
+        purpose: [
+          "Detect prediabetes and diabetes.",
+          "Monitor blood sugar control.",
+          "Evaluate diabetes treatment."
+        ],
+        sampleRequired: "Blood",
+        preparation: "Fast strictly (water only) for 8-12 hours.",
+        recommendedFor: [
+          "Family history of diabetes.",
+          "Experiencing extreme thirst or frequent urination.",
+          "Routine health checks over age 35."
+        ],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Blood Sugar (PPBS)", 
+        description: "Measures blood glucose levels exactly 2 hours after a meal to see how the body handles carbohydrates.",
+        purpose: ["Assess post-meal glucose spikes.", "Check if insulin response is adequate."],
+        sampleRequired: "Blood",
+        preparation: "Test exactly 2 hours after finishing a meal.",
+        recommendedFor: ["Diabetic patients.", "Pregnant women screening for gestational diabetes."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Blood Sugar (RBS)", 
+        description: "Random blood sugar test taken at any time of day to check for severe diabetic fluctuations.",
+        purpose: ["Quick screen for severe hyperglycemia.", "Emergency evaluation."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Patients with sudden diabetic symptoms.", "Emergency room checks."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "GTT", 
+        description: "Glucose Tolerance Test measures the body's response to sugar to diagnose prediabetes or gestational diabetes.",
+        purpose: ["Confirm diabetes diagnosis.", "Diagnose gestational diabetes."],
+        sampleRequired: "Blood",
+        preparation: "Fasting required; will consume a glucose drink during the test.",
+        recommendedFor: ["Pregnant women at 24-28 weeks.", "Patients with borderline FBS results."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Serum Creatinine", 
+        description: "Measures creatinine levels in the blood. A key indicator of kidney health and filtration efficiency.",
+        purpose: [
+          "Evaluate overall kidney function.",
+          "Monitor existing kidney disease.",
+          "Detect kidney damage early."
+        ],
+        sampleRequired: "Blood",
+        preparation: "No fasting required.",
+        recommendedFor: [
+          "Patients with high blood pressure or diabetes.",
+          "Individuals taking kidney-impacting medications.",
+          "Routine wellness screening."
+        ],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Blood Urea", 
+        description: "Measures the amount of urea nitrogen in your blood, another critical marker for kidney and liver health.",
+        purpose: ["Evaluate kidney function.", "Check for dehydration.", "Assess liver protein metabolism."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Patients with kidney disease.", "Individuals with heart failure or dehydration."],
+        reportTime: "Same Day"
+      }
     ]
   },
   {
@@ -63,14 +130,32 @@ export const servicesData: Service[] = [
     turnaroundTime: "Same day (within 6 hours)",
     process: "Blood sample is drawn from a vein. The sample is then centrifuged to extract serum for lipid quantification.",
     tests: [
-      { name: "Serum Cholesterol", description: "Measures the total amount of cholesterol in your blood, giving a broad view of your lipid health." },
-      { name: "Triglycerides", description: "Measures a type of fat in the blood. High levels can increase the risk of heart disease, especially in women." },
-      { name: "HDL Cholesterol", description: "High-Density Lipoprotein, known as the 'good' cholesterol because it helps remove other forms of cholesterol from your bloodstream." },
-      { name: "LDL Cholesterol", description: "Low-Density Lipoprotein, the 'bad' cholesterol that can build up in the walls of your blood vessels." },
-      { name: "VLDL Cholesterol", description: "Very-Low-Density Lipoprotein, which primarily carries triglycerides. High levels are linked to plaque buildup in arteries." },
-      { name: "Total Proteins", description: "Measures the total amount of two classes of proteins found in the fluid portion of your blood: albumin and globulin." },
-      { name: "Serum Albumin", description: "A protein made by the liver. Low levels can indicate liver or kidney disease." },
-      { name: "A/G Ratio", description: "The calculated ratio of albumin to globulin, used to detect liver disease, kidney disease, or immune disorders." }
+      { 
+        name: "Lipid Profile (Complete Panel)", 
+        description: "A complete panel measuring cholesterol and triglycerides. Used to assess cardiovascular disease risk.",
+        purpose: [
+          "Measure Total, HDL, LDL cholesterol, and Triglycerides.",
+          "Evaluate heart attack and stroke risk.",
+          "Monitor effectiveness of cholesterol medications."
+        ],
+        sampleRequired: "Blood",
+        preparation: "Strict fasting for 10-12 hours; no alcohol for 24 hours.",
+        recommendedFor: [
+          "Routine heart health screening (Age 20+).",
+          "Family history of heart disease or obesity.",
+          "Patients managing high cholesterol."
+        ],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Serum Cholesterol", 
+        description: "Measures the total amount of cholesterol in your blood, giving a broad view of your lipid health.",
+        purpose: ["Baseline assessment of total blood fat."],
+        sampleRequired: "Blood",
+        preparation: "Strict fasting for 10-12 hours.",
+        recommendedFor: ["Routine heart health screening.", "Monitoring dietary changes."],
+        reportTime: "Same Day"
+      }
     ]
   },
   {
@@ -83,23 +168,59 @@ export const servicesData: Service[] = [
     turnaroundTime: "Same day (within 6 hours)",
     process: "A standard venous blood draw is performed. The serum is analyzed using advanced photometric biochemistry analyzers.",
     tests: [
-      { name: "Total Bilirubin", description: "Measures all bilirubin in the blood. High levels cause jaundice and indicate liver or gallbladder issues." },
-      { name: "Direct Bilirubin", description: "Measures conjugated bilirubin, which the liver has processed. Helps narrow down the cause of jaundice." },
-      { name: "Indirect Bilirubin", description: "Unconjugated bilirubin that hasn't passed through the liver. Elevated levels can indicate red blood cell destruction." },
-      { name: "SGPT", description: "Serum Glutamic Pyruvic Transaminase (ALT). An enzyme found mostly in the liver; high levels indicate liver damage." },
-      { name: "SGOT", description: "Serum Glutamic Oxaloacetic Transaminase (AST). An enzyme found in the liver, heart, and muscles." },
-      { name: "Alkaline Phosphatase", description: "An enzyme related to the bile ducts; elevated levels often suggest bile duct obstruction or bone disease." },
-      { name: "Serum Uric Acid", description: "High levels can cause gout or kidney stones, reflecting poor purine metabolism." },
-      { name: "Serum LDH", description: "Lactate Dehydrogenase is a marker of tissue damage occurring anywhere in the body." },
-      { name: "CPK (MB)", description: "Creatine Phosphokinase-MB is an enzyme found primarily in heart muscle, used to detect heart attacks." },
-      { name: "CPK (Total)", description: "Measures total CPK in the blood, indicating muscle damage or inflammation." },
-      { name: "Serum Amylase", description: "An enzyme that helps digest carbohydrates. High levels indicate pancreatic inflammation (pancreatitis)." },
-      { name: "Serum Lipase", description: "An enzyme that breaks down fats. It is a highly specific marker for acute pancreatitis." },
-      { name: "Acid Phosphatase", description: "An enzyme used historically to detect prostate cancer, though now largely replaced by PSA testing." },
-      { name: "Electrolytes (Na, K, Cl)", description: "Measures sodium, potassium, and chloride to assess hydration, kidney function, and blood pH." },
-      { name: "Serum Calcium", description: "Measures calcium levels for bone health, kidney disease, or parathyroid gland function." },
-      { name: "Serum Phosphorous", description: "Works with calcium to build strong bones. Imbalances indicate kidney or nutritional issues." },
-      { name: "HbA1c", description: "Provides a 3-month average of blood sugar levels, the gold standard for long-term diabetes management." }
+      { 
+        name: "Liver Function Test (Comprehensive)", 
+        description: "Measures liver enzymes, proteins, and bilirubin. Evaluates how well the liver is clearing waste and functioning.",
+        purpose: [
+          "Screen for liver infections like Hepatitis.",
+          "Monitor liver diseases (e.g., fatty liver).",
+          "Assess liver damage from medications or toxins."
+        ],
+        sampleRequired: "Blood",
+        preparation: "No strict fasting, but 10-12 hours preferred.",
+        recommendedFor: [
+          "Experiencing jaundice, fatigue, or abdominal pain.",
+          "Heavy alcohol users.",
+          "Patients on long-term medications."
+        ],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Total Bilirubin", 
+        description: "Measures all bilirubin in the blood. High levels cause jaundice and indicate liver or gallbladder issues.",
+        purpose: ["Diagnose jaundice.", "Monitor progression of liver disease."],
+        sampleRequired: "Blood",
+        preparation: "No strict fasting required.",
+        recommendedFor: ["Patients with yellowing of skin or eyes."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "SGPT & SGOT", 
+        description: "Liver enzymes (ALT and AST). High levels strongly indicate active liver inflammation or damage.",
+        purpose: ["Detect acute liver damage.", "Monitor chronic hepatitis or cirrhosis."],
+        sampleRequired: "Blood",
+        preparation: "No strict fasting required.",
+        recommendedFor: ["Patients on liver-taxing medications.", "Heavy alcohol users."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Alkaline Phosphatase", 
+        description: "An enzyme related to the bile ducts; elevated levels often suggest bile duct obstruction or bone disease.",
+        purpose: ["Detect blocked bile ducts.", "Screen for bone disorders."],
+        sampleRequired: "Blood",
+        preparation: "No strict fasting required.",
+        recommendedFor: ["Patients with severe abdominal pain or bone pain."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "HbA1c", 
+        description: "Provides a 3-month average of blood sugar levels, the gold standard for long-term diabetes management.",
+        purpose: ["Monitor long-term diabetes control.", "Screen for prediabetes."],
+        sampleRequired: "Blood",
+        preparation: "No fasting required.",
+        recommendedFor: ["All diabetic patients.", "Routine health screenings."],
+        reportTime: "Same Day"
+      }
     ]
   },
   {
@@ -112,23 +233,33 @@ export const servicesData: Service[] = [
     turnaroundTime: "Same day (within 2-4 hours)",
     process: "Blood is drawn from a vein using an EDTA tube to prevent clotting, then analyzed using automated cell counters.",
     tests: [
-      { name: "Complete Blood Count (CBC)", description: "A broad screening panel that evaluates overall health and detects a wide range of disorders, including anemia and leukemia." },
-      { name: "Hb%", description: "Hemoglobin level. Low levels indicate anemia, while high levels can suggest lung disease or dehydration." },
-      { name: "TC", description: "Total Count of white blood cells. A high count usually indicates fighting an infection." },
-      { name: "DC", description: "Differential Count breaks down the types of white blood cells (neutrophils, lymphocytes, etc.) to pinpoint infection types." },
-      { name: "ESR", description: "Erythrocyte Sedimentation Rate is a non-specific test that helps detect inflammation associated with infections, cancers, and autoimmune diseases." },
-      { name: "TRBC", description: "Total Red Blood Cell count. Measures the actual number of red blood cells in a given volume of blood." },
-      { name: "AEC", description: "Absolute Eosinophil Count helps diagnose allergic diseases, parasitic infections, and certain medical conditions." },
-      { name: "Platelet Count", description: "Measures the number of platelets, which are critical for blood clotting and wound healing." },
-      { name: "PCV", description: "Packed Cell Volume (Hematocrit) measures the proportion of blood volume that is occupied by red blood cells." },
-      { name: "MCV", description: "Mean Corpuscular Volume measures the average size of your red blood cells. Helps categorize types of anemia." },
-      { name: "MCH", description: "Mean Corpuscular Hemoglobin measures the average amount of hemoglobin inside a single red blood cell." },
-      { name: "MCHC", description: "Mean Corpuscular Hemoglobin Concentration measures the concentration of hemoglobin in a given volume of red blood cells." },
-      { name: "BT", description: "Bleeding Time evaluates how fast small blood vessels in the skin close to stop bleeding." },
-      { name: "CT", description: "Clotting Time measures how long it takes for your blood to form a clot." },
-      { name: "LE Cell Phenomenon", description: "A historical test used to aid in the diagnosis of Systemic Lupus Erythematosus (SLE)." },
-      { name: "Sickling Test", description: "Screens for Sickle Cell trait or disease by observing red blood cells under reduced oxygen tension." },
-      { name: "Reticulocyte Count", description: "Measures the percentage of newly produced (immature) red blood cells, indicating how well bone marrow is functioning." }
+      { 
+        name: "Complete Blood Count (CBC)", 
+        description: "A broad screening panel that evaluates overall health and detects a wide range of disorders, including anemia and leukemia.",
+        purpose: ["Diagnose anemia.", "Detect infections.", "Monitor blood disorders."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Routine checkups.", "Patients with fatigue or fever."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "ESR", 
+        description: "Erythrocyte Sedimentation Rate is a non-specific test that helps detect inflammation associated with infections, cancers, and autoimmune diseases.",
+        purpose: ["Detect acute or chronic inflammation.", "Monitor autoimmune diseases."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Patients with joint pain or unexplained fevers."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Platelet Count", 
+        description: "Measures the number of platelets, which are critical for blood clotting and wound healing.",
+        purpose: ["Diagnose bleeding disorders.", "Monitor dengue fever recovery."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Patients with unexplained bruising.", "Dengue suspects."],
+        reportTime: "Same Day"
+      }
     ]
   },
   {
@@ -141,17 +272,24 @@ export const servicesData: Service[] = [
     turnaroundTime: "Same day (within 6-8 hours)",
     process: "Involves both automated analysis and manual microscopic review of a stained blood smear by a pathologist.",
     tests: [
-      { name: "Peripheral Smear", description: "A manual microscopic examination of blood cells to check for abnormalities in size, shape, and color." },
-      { name: "Coombs (Direct)", description: "Used to test for autoimmune hemolytic anemia, checking if antibodies are attached directly to red blood cells." },
-      { name: "Coombs (Indirect/ICT)", description: "Checks for unattached antibodies in the bloodstream, often used in prenatal testing or before a blood transfusion." },
-      { name: "Prothrombin Time (PT)-INR", description: "Measures how long it takes for blood to clot. Crucial for monitoring patients on blood-thinning medications like Warfarin." },
-      { name: "APTT", description: "Activated Partial Thromboplastin Time evaluates the intrinsic coagulation pathway. Used to monitor Heparin therapy." },
-      { name: "Smear for MP", description: "Microscopic examination of a blood smear specifically searching for Malaria Parasites." },
-      { name: "Fibrinogen", description: "Measures a protein essential for blood clot formation. Abnormal levels can indicate bleeding or thrombotic disorders." },
-      { name: "QBC for MP", description: "Quantitative Buffy Coat test is a highly sensitive fluorescent staining technique to rapidly detect Malaria." },
-      { name: "QBC MF", description: "QBC test specifically looking for Microfilaria parasites in the blood." },
-      { name: "Persiste \"F\"", description: "Measures fetal hemoglobin (HbF) levels, which can be elevated in conditions like Thalassemia." },
-      { name: "Dengue Profile", description: "A comprehensive panel (NS1 Antigen, IgM, IgG) to detect and stage Dengue fever virus infection." }
+      { 
+        name: "Peripheral Smear", 
+        description: "A manual microscopic examination of blood cells to check for abnormalities in size, shape, and color.",
+        purpose: ["Investigate unexplained anemia.", "Diagnose blood cancers."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Patients with abnormal CBC results."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Dengue Profile", 
+        description: "A comprehensive panel (NS1 Antigen, IgM, IgG) to detect and stage Dengue fever virus infection.",
+        purpose: ["Confirm Dengue fever.", "Determine if infection is recent or past."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Patients with high fever, body aches, and rash.", "Endemic outbreak screenings."],
+        reportTime: "Same Day"
+      }
     ]
   },
   {
@@ -164,22 +302,24 @@ export const servicesData: Service[] = [
     turnaroundTime: "Next day (within 24-36 hours)",
     process: "Blood is drawn into serum separator tubes. Specialized chemiluminescence immunoassays (CLIA) are used for highly sensitive detection.",
     tests: [
-      { name: "T3", description: "Triiodothyronine is a thyroid hormone that controls metabolism. Elevated levels suggest hyperthyroidism." },
-      { name: "T4", description: "Thyroxine is the main hormone produced by the thyroid gland. Used to evaluate thyroid function." },
-      { name: "TSH", description: "Thyroid Stimulating Hormone is produced by the pituitary gland to signal the thyroid. The most sensitive marker for thyroid screening." },
-      { name: "Free T3", description: "Measures the unbound, active form of T3 in the blood for a more accurate assessment of thyroid function." },
-      { name: "Free T4", description: "Measures the active form of T4, helping distinguish between true thyroid disease and protein-binding abnormalities." },
-      { name: "FSH", description: "Follicle Stimulating Hormone controls the menstrual cycle in women and sperm production in men." },
-      { name: "LH", description: "Luteinizing Hormone triggers ovulation in women and testosterone production in men." },
-      { name: "Prolactin", description: "A hormone that stimulates milk production. High levels in non-pregnant individuals can indicate pituitary tumors." },
-      { name: "Estradiol", description: "The most important form of estrogen. Measured to evaluate ovarian function and menopause." },
-      { name: "Testosterone (Total/Free)", description: "The primary male sex hormone. Tested to evaluate erectile dysfunction, infertility, or PCOS in women." },
-      { name: "Anti DS DNA", description: "An autoantibody test highly specific for diagnosing Systemic Lupus Erythematosus (SLE)." },
-      { name: "HIV Western Blot", description: "A highly accurate confirmatory test for HIV following a positive screening test." },
-      { name: "Vitamin B12 Levels", description: "Crucial for nerve function and DNA synthesis. Deficiency can cause irreversible neurological damage and anemia." },
-      { name: "Vitamin D3 Levels", description: "Essential for bone health and immune function. Deficiency is extremely common due to low sun exposure." },
-      { name: "Homocysteine", description: "An amino acid. High levels are a risk factor for cardiovascular disease and stroke." },
-      { name: "Beta HCG Levels", description: "The pregnancy hormone. Quantitatively measures exact levels to monitor pregnancy viability or certain tumors." }
+      { 
+        name: "Thyroid Profile (T3, T4, TSH)", 
+        description: "Comprehensive thyroid function evaluation.",
+        purpose: ["Diagnose hypothyroidism and hyperthyroidism.", "Monitor thyroid medication dosage."],
+        sampleRequired: "Blood",
+        preparation: "Morning fasting sample preferred.",
+        recommendedFor: ["Patients with unexplained weight changes.", "Fatigue and hair loss sufferers."],
+        reportTime: "Next Day"
+      },
+      { 
+        name: "Vitamin D3 & B12", 
+        description: "Essential vitamins for bone health and nerve function.",
+        purpose: ["Detect vitamin deficiencies.", "Assess cause of neuropathy or fatigue."],
+        sampleRequired: "Blood",
+        preparation: "Fasting preferred.",
+        recommendedFor: ["Individuals with low sun exposure.", "Vegans and vegetarians."],
+        reportTime: "Next Day"
+      }
     ]
   },
   {
@@ -192,51 +332,24 @@ export const servicesData: Service[] = [
     turnaroundTime: "Same day (within 4-8 hours)",
     process: "Blood is collected in a plain tube, clotted, and centrifuged. The clear serum is then reacted with specific antigens to detect antibodies.",
     tests: [
-      { name: "Widal", description: "A traditional agglutination test used for the diagnosis of Enteric or Typhoid fever." },
-      { name: "VDRL", description: "Venereal Disease Research Laboratory test, a screening tool for Syphilis." },
-      { name: "Rheumatoid Factor", description: "Detects autoantibodies associated with Rheumatoid Arthritis and other autoimmune diseases." },
-      { name: "ASO Titre", description: "Anti-Streptolysin O test checks for a recent infection with Group A Streptococcus bacteria." },
-      { name: "CRP", description: "C-Reactive Protein is a highly sensitive marker for acute inflammation in the body." },
-      { name: "Blood Group & RH Typing", description: "Determines your ABO blood type and Rh factor (positive or negative). Essential before surgeries or transfusions." },
-      { name: "TPHA", description: "Treponema Pallidum Hemagglutination Assay is a specific confirmatory test for Syphilis." },
-      { name: "HBsAg", description: "Hepatitis B Surface Antigen. A positive result indicates an active Hepatitis B virus infection." },
-      { name: "HIV I & II Test", description: "Rapid screening test to detect antibodies against the Human Immunodeficiency Virus types 1 and 2." },
-      { name: "Tri-dot (I & II)", description: "A rapid visual test for the differential detection of HIV-1 and HIV-2 antibodies." },
-      { name: "NACO (I & II) Test", description: "Standardized HIV screening protocol adhering to the National AIDS Control Organisation guidelines." },
-      { name: "ANA", description: "Antinuclear Antibodies test screens for autoimmune disorders like Lupus by detecting antibodies that attack the cell nucleus." },
-      { name: "ANF", description: "Antinuclear Factor, largely synonymous with ANA, used to screen for systemic rheumatic diseases." },
-      { name: "Anti HCV", description: "Detects antibodies against the Hepatitis C virus, indicating current or past infection." },
-      { name: "Anti HAV", description: "Detects antibodies to Hepatitis A, distinguishing between acute infection (IgM) and past exposure/immunity (IgG)." }
-    ]
-  },
-  {
-    id: "mantoux-test",
-    name: "Mantoux Test",
-    iconName: "Syringe",
-    description: "A screening tool for tuberculosis (TB) infection.",
-    detailedOverview: "The Mantoux tuberculin skin test (TST) is the standard method of determining whether a person is infected with Mycobacterium tuberculosis. It measures the delayed hypersensitivity immune reaction of the skin.",
-    preparation: "No preparation required. Ensure the testing area on the forearm is clean and free of lotions.",
-    turnaroundTime: "48-72 hours (Requires a return visit for reading)",
-    process: "A small amount of tuberculin purified protein derivative (PPD) is injected intradermally into the inner surface of the forearm. The patient must return in 48-72 hours to have a medical professional measure the induration (raised bump).",
-    tests: [
-      { name: "Mantoux Test", description: "The intradermal injection and subsequent physical measurement of the skin reaction to screen for latent or active Tuberculosis." }
-    ]
-  },
-  {
-    id: "fluid-analysis",
-    name: "Fluid Analysis",
-    iconName: "TestTube",
-    description: "Analysis of various bodily fluids to diagnose infections, joint issues, or neural conditions.",
-    detailedOverview: "Fluid analysis involves macroscopic, microscopic, and biochemical evaluation of specialized bodily fluids (other than blood or urine). These fluids act as protective cushions or lubricants, and analyzing them provides direct insight into local organ or joint pathologies.",
-    preparation: "Preparation varies heavily by the specific fluid. Some require abstinence (semen), others require specialized clinical aspiration (CSF).",
-    turnaroundTime: "24-48 hours",
-    process: "Fluids are collected either by the patient (e.g., semen) or via a clinical aspiration procedure by a doctor (e.g., lumbar puncture, thoracentesis). The lab then analyzes cell counts, proteins, and cultures.",
-    tests: [
-      { name: "Semen Analysis", description: "Evaluates sperm count, motility, and morphology to assess male fertility." },
-      { name: "Synovial Fluid Analysis", description: "Joint fluid analysis to diagnose the cause of joint inflammation, such as gout, infection, or arthritis." },
-      { name: "CSF Fluid Analysis", description: "Cerebrospinal fluid analysis helps diagnose meningitis, encephalitis, or central nervous system bleeding." },
-      { name: "Pleural Fluid Analysis", description: "Evaluates fluid accumulated around the lungs to determine if it is transudative (heart failure) or exudative (infection/cancer)." },
-      { name: "Ascitic Fluid Analysis", description: "Evaluates fluid accumulated in the abdominal cavity, often used to diagnose cirrhosis complications or peritonitis." }
+      { 
+        name: "Widal Test", 
+        description: "A traditional agglutination test used for the diagnosis of Enteric or Typhoid fever.",
+        purpose: ["Diagnose Typhoid fever.", "Determine severity of infection."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Patients with prolonged high fever and abdominal pain."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "HIV I & II Test", 
+        description: "Rapid screening test to detect antibodies against the Human Immunodeficiency Virus types 1 and 2.",
+        purpose: ["Screen for HIV infection.", "Pre-surgical screening."],
+        sampleRequired: "Blood",
+        preparation: "No preparation required.",
+        recommendedFor: ["Routine STD screening.", "Pre-employment or pre-surgical requirements."],
+        reportTime: "Same Day"
+      }
     ]
   },
   {
@@ -249,89 +362,24 @@ export const servicesData: Service[] = [
     turnaroundTime: "Same day (within 2-4 hours)",
     process: "You will provide a mid-stream urine sample in a sterile container. The lab performs a dipstick chemical analysis followed by microscopic examination of the sediment.",
     tests: [
-      { name: "Albumin", description: "Detects protein in the urine, an early sign of kidney damage, especially in diabetics." },
-      { name: "Sugar (F)", description: "Checks for glucose in fasting urine, indicating high blood sugar spilling over." },
-      { name: "Sugar (PP)", description: "Checks for glucose in post-prandial (after meal) urine." },
-      { name: "Sugar (R)", description: "Checks for glucose in a random urine sample." },
-      { name: "Microscopy", description: "Microscopic evaluation to detect red/white blood cells, epithelial cells, crystals, and bacteria." },
-      { name: "Leucocytes", description: "Presence of white blood cells in urine, indicating urinary tract inflammation or infection." },
-      { name: "Nitrate", description: "Many bacteria convert urinary nitrates to nitrites. A positive test strongly suggests a bacterial UTI." },
-      { name: "pH", description: "Measures the acidity of urine. Abnormal pH can promote the formation of kidney stones." },
-      { name: "Blood", description: "Detects hidden (occult) blood in the urine, which can result from stones, trauma, or tumors." },
-      { name: "Specific Gravity", description: "Measures urine concentration, showing how well the kidneys are balancing water content." },
-      { name: "Ketone Bodies", description: "Products of fat metabolism. Present during diabetic ketoacidosis or prolonged fasting." },
-      { name: "Bile Salts", description: "Indicates liver disease or bile duct obstruction if found in urine." },
-      { name: "Bile Pigments", description: "Presence of bilirubin in urine, an early indicator of liver dysfunction." },
-      { name: "Urobilinogen", description: "Elevated levels can indicate liver diseases like hepatitis or hemolytic anemia." },
-      { name: "Bence Jones Proteins", description: "Specific proteins found in urine that are highly indicative of Multiple Myeloma." },
-      { name: "Pregnancy Test", description: "Detects the presence of Human Chorionic Gonadotropin (hCG) hormone in urine." },
-      { name: "Chyle", description: "Tests for lymphatic fluid in urine, which makes it appear milky white." },
-      { name: "Urine M/C", description: "Microscopy and Culture to precisely identify the bacteria causing a UTI and test antibiotic sensitivity." },
-      { name: "Protein/Creatinine Ratio", description: "A spot urine test to estimate 24-hour protein excretion, used to monitor kidney disease." },
-      { name: "24 Hrs Urine Proteins", description: "Requires collecting all urine over a 24-hour period to accurately quantify total protein loss." }
-    ]
-  },
-  {
-    id: "culture-sensitivity",
-    name: "Culture & Sensitivity",
-    iconName: "Microscope",
-    description: "Microbial identification and antibiotic susceptibility testing to determine the most effective treatment.",
-    detailedOverview: "Culture and sensitivity testing is the gold standard for diagnosing bacterial and fungal infections. The lab incubates the sample to grow the pathogen, identifies the specific organism, and then tests a panel of antibiotics against it to tell your doctor exactly which medicine will work best.",
-    preparation: "Samples MUST be collected before starting any antibiotic therapy. Ensure sterile collection to avoid contamination.",
-    turnaroundTime: "48-72 hours (Requires incubation time for bacterial growth)",
-    process: "The sample is streaked onto agar plates and incubated at body temperature. Any growing colonies are identified using biochemical tests, and antibiotic discs are applied to determine susceptibility.",
-    tests: [
-      { name: "Urine Culture", description: "Identifies the specific bacteria causing a urinary tract infection and determines the best antibiotic." },
-      { name: "Blood Culture (BB/HB)", description: "Detects severe systemic infections (septicemia) where bacteria have entered the bloodstream." },
-      { name: "Aural Swab Culture", description: "Identifies pathogens causing ear infections from a swab of the ear canal." },
-      { name: "Pus Culture", description: "Identifies the bacteria causing wound infections or abscesses." },
-      { name: "Fluid Culture", description: "Culturing sterile body fluids (like CSF or pleural fluid) to detect severe deep-tissue infections." },
-      { name: "Stool Culture", description: "Identifies pathogenic bacteria in the digestive tract causing severe diarrhea, such as Salmonella or Shigella." }
-    ]
-  },
-  {
-    id: "sputum",
-    name: "Sputum",
-    iconName: "TestTube",
-    description: "Analysis of sputum to diagnose respiratory infections like Tuberculosis.",
-    detailedOverview: "Sputum is the thick mucus coughed up from the lower respiratory tract (lungs and bronchi). Analyzing sputum helps diagnose bacterial pneumonias, bronchitis, and most importantly, pulmonary Tuberculosis.",
-    preparation: "Rinse mouth with water before collection. Do not collect saliva; a deep cough from the lungs is required. Early morning samples are best.",
-    turnaroundTime: "24-48 hours (TB cultures can take weeks)",
-    process: "The patient coughs deeply into a sterile container. The lab performs various staining techniques to visually identify bacteria under a microscope, followed by culture.",
-    tests: [
-      { name: "AFB", description: "Acid-Fast Bacillus smear. A rapid microscopic staining test used to detect the bacteria that causes Tuberculosis." },
-      { name: "Gram's Stain", description: "A fundamental staining method used to broadly categorize bacteria into Gram-positive or Gram-negative, guiding initial antibiotic choice." },
-      { name: "Culture", description: "Growing the sputum sample on special media to definitively identify the respiratory pathogen and test antibiotic resistance." }
-    ]
-  },
-  {
-    id: "motion-tests",
-    name: "Motion Tests",
-    iconName: "ClipboardList",
-    description: "Stool analysis to detect digestive tract health issues, infections, and parasites.",
-    detailedOverview: "Also known as stool or feces tests, this panel evaluates the physical, chemical, and microscopic properties of stool. It is crucial for diagnosing gastrointestinal disorders, parasitic infections, poor nutrient absorption, and hidden bleeding in the digestive tract.",
-    preparation: "Avoid taking antidiarrheal medications or barium before the test. Collect the sample in a clean, dry, leak-proof container without mixing it with urine.",
-    turnaroundTime: "Same day (within 4-6 hours)",
-    process: "The lab performs a gross visual inspection, chemical tests for blood or sugars, and a microscopic examination for parasite eggs or cysts.",
-    tests: [
-      { name: "Routine", description: "General macroscopic and microscopic evaluation of stool consistency, color, and presence of undigested food or cells." },
-      { name: "Ova & Cysts", description: "Microscopic examination specifically searching for the eggs (ova) or cysts of intestinal parasites and worms." },
-      { name: "Occult Blood", description: "Chemical test to detect hidden (occult) blood in the stool, a screening tool for colorectal cancer or gastrointestinal bleeding." },
-      { name: "Reducing Substances", description: "Checks for unabsorbed sugars in the stool, helping diagnose conditions like lactose intolerance." }
-    ]
-  },
-  {
-    id: "imaging-cardiology",
-    name: "ECG & X-Rays",
-    iconName: "Bone",
-    description: "Diagnostic imaging and cardiac activity monitoring.",
-    detailedOverview: "This department handles foundational anatomical and physiological diagnostics. Electrocardiograms monitor the electrical rhythm of the heart, while X-Rays provide clear internal imaging of bones, lungs, and the chest cavity.",
-    preparation: "For ECG: Wear loose clothing; avoid applying lotions to the chest. For X-Rays: You will need to remove metal objects, jewelry, and wear a hospital gown if necessary.",
-    turnaroundTime: "Immediate (Films/Graphs provided within 30 minutes, Radiologist report later same day)",
-    process: "For ECG, electrodes are painlessly attached to your chest and limbs. For X-Rays, you will be positioned by a technician between the X-ray machine and the film plate for a brief second.",
-    tests: [
-      { name: "ECG", description: "Electrocardiogram records the electrical signals in your heart. Used to detect arrhythmias, heart attacks, and blockages." },
-      { name: "X-Rays", description: "Digital radiography used to diagnose bone fractures, lung infections (like pneumonia), and structural abnormalities." }
+      { 
+        name: "Routine Urine Analysis", 
+        description: "Detects UTIs, kidney disease, and diabetes through urine chemistry and microscopy.",
+        purpose: ["Screen for urinary tract infections.", "Detect kidney problems early.", "Check for sugar in urine."],
+        sampleRequired: "Urine",
+        preparation: "Collect early morning mid-stream sample.",
+        recommendedFor: ["Patients with burning sensation during urination.", "Diabetics."],
+        reportTime: "Same Day"
+      },
+      { 
+        name: "Urine Culture & Sensitivity", 
+        description: "Precisely identifies the bacteria causing a UTI and tests antibiotic sensitivity.",
+        purpose: ["Identify specific infection-causing bacteria.", "Determine effective antibiotics."],
+        sampleRequired: "Urine",
+        preparation: "Sterile container required. Collect mid-stream.",
+        recommendedFor: ["Patients with recurrent UTIs.", "Individuals not responding to standard antibiotics."],
+        reportTime: "48-72 Hours"
+      }
     ]
   }
 ];

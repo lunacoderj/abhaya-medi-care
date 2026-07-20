@@ -9,24 +9,11 @@ import { cn } from '../../lib/utils';
 export function GalleryBento() {
   const [index, setIndex] = useState(-1);
 
-  // Bento grid mapping: varying row/col spans for visual interest
-  const getBentoClass = (index: number) => {
-    switch (index % 6) {
-      case 0: return "col-span-1 row-span-2 md:col-span-2 md:row-span-2"; // Large square
-      case 1: return "col-span-1 row-span-1 md:col-span-2 md:row-span-1"; // Wide landscape
-      case 2: return "col-span-1 row-span-1"; // Small square
-      case 3: return "col-span-1 row-span-1 md:col-span-1 md:row-span-2"; // Tall portrait
-      case 4: return "col-span-1 row-span-1 md:col-span-2 md:row-span-1"; // Wide landscape
-      case 5: return "col-span-1 row-span-1"; // Small square
-      default: return "col-span-1 row-span-1";
-    }
-  };
-
   const slides = galleryData.map(img => ({ src: img.src, alt: img.alt }));
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[200px] gap-4">
+      <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
         {galleryData.map((image, i) => (
           <motion.div
             key={image.id}
@@ -34,16 +21,13 @@ export function GalleryBento() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className={cn(
-              "relative rounded-xl overflow-hidden group cursor-pointer bg-brand-light",
-              getBentoClass(i)
-            )}
+            className="relative rounded-xl overflow-hidden group cursor-pointer bg-brand-light break-inside-avoid shadow-clay-light hover:shadow-lg transition-shadow"
             onClick={() => setIndex(i)}
           >
             <img 
               src={image.src} 
               alt={image.alt}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
             />
             {/* Hover Overlay */}

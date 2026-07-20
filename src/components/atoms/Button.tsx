@@ -4,18 +4,18 @@ import { cn } from '../../lib/utils';
 import { Loader2 } from 'lucide-react';
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-2xl text-sm font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue disabled:pointer-events-none disabled:opacity-50 active:scale-95",
+  "inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue disabled:pointer-events-none disabled:opacity-50 active:scale-95",
   {
     variants: {
       variant: {
-        default: "bg-brand-pale text-brand-blue shadow-clay-btn hover:shadow-clay-btn-active hover:bg-brand-pale border-0",
-        secondary: "bg-brand-pale text-brand-orange shadow-clay-btn hover:shadow-clay-btn-active border-0",
-        outline: "bg-brand-pale text-brand-charcoal shadow-clay-btn hover:shadow-clay-btn-active border-0",
+        default: "bg-gradient-to-r from-brand-blue to-brand-teal text-white shadow-soft hover:shadow-glow-blue hover:-translate-y-0.5 border-0",
+        secondary: "bg-gradient-to-r from-brand-orange to-red-500 text-white shadow-soft hover:-translate-y-0.5 border-0",
+        outline: "bg-white text-brand-charcoal shadow-soft border border-brand-gray/20 hover:border-brand-blue hover:text-brand-blue hover:-translate-y-0.5",
         ghost: "hover:bg-brand-pale text-brand-charcoal hover:text-brand-blue shadow-none",
         link: "text-brand-blue underline-offset-4 hover:underline shadow-none",
       },
       size: {
-        default: "h-10 px-4 py-2",
+        default: "h-11 px-5 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-12 rounded-lg px-8 text-base",
         icon: "h-10 w-10",

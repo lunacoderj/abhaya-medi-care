@@ -37,13 +37,13 @@ export function StatCard({ endValue, suffix = "", label, iconName, duration = 2 
   }, [isInView, endValue, duration]);
 
   return (
-    <Card variant="clay" ref={ref} className="text-center group hover:-translate-y-1 transition-transform">
-      <div className="flex justify-center mb-4">
-        <div className="bg-brand-pale text-brand-teal p-4 rounded-2xl group-hover:bg-brand-teal group-hover:text-white transition-colors duration-300">
-          <Icon name={iconName} size={32} />
+    <Card variant="elevated" ref={ref} className="text-center group hover:-translate-y-2 transition-transform duration-300">
+      <div className="flex justify-center mb-6">
+        <div className="bg-brand-light text-brand-blue p-4 rounded-full group-hover:bg-gradient-to-br group-hover:from-brand-blue group-hover:to-brand-teal group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-glow-blue">
+          <Icon name={iconName} size={36} />
         </div>
       </div>
-      <h3 className="text-4xl font-bold text-brand-blue mb-2">
+      <h3 className="text-4xl font-extrabold text-brand-charcoal mb-2 tracking-tight">
         {new Intl.NumberFormat('en-IN').format(count)}{suffix}
       </h3>
       <p className="text-brand-charcoal font-medium">{label}</p>

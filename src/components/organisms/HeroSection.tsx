@@ -11,12 +11,11 @@ export function HeroSection() {
   const whatsappUrl = buildWhatsAppUrl(clinicData.contact.whatsapp, whatsappMessage);
 
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen flex items-center pt-20 overflow-hidden bg-brand-pale">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-brand-light">
       {/* Vibrant Gradient Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-brand-pale via-brand-pale to-[#cbd5e1]/40" />
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-teal/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-blue/20 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-brand-orange/15 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-teal/10 via-brand-light to-brand-blue/5" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-blue/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-orange/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4 pointer-events-none" />
 
       {/* Floating Icons Background */}
       <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden hidden md:block">
@@ -34,8 +33,8 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
             className="flex justify-center mb-6"
           >
-            <Badge variant="outline" className="shadow-clay bg-brand-pale border-0 text-brand-blue gap-2 px-4 py-2 rounded-full font-bold text-sm">
-              <Shield size={16} className="text-brand-orange" />
+            <Badge variant="outline" className="glass bg-white/80 border border-brand-gray/10 text-brand-blue gap-2 px-5 py-2.5 rounded-full font-bold text-sm shadow-soft">
+              <Shield size={16} className="text-brand-teal" />
               NABL Accredited Diagnostics
             </Badge>
           </motion.div>
@@ -65,14 +64,14 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="w-full sm:w-auto group gap-2 rounded-2xl shadow-clay-btn hover:shadow-clay-btn-active transition-all bg-brand-pale text-brand-charcoal hover:bg-brand-pale border-0 font-bold px-8 py-6 text-lg">
-                <MessageCircle size={22} className="text-green-500 group-hover:scale-110 transition-transform" />
+              <Button size="lg" className="w-full sm:w-auto px-8 py-6 text-lg rounded-2xl group gap-3">
+                <MessageCircle size={24} className="group-hover:scale-110 transition-transform" />
                 Book Appointment
               </Button>
             </a>
             <a href={`tel:${clinicData.contact.phone}`}>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto group gap-2 rounded-2xl shadow-clay-btn hover:shadow-clay-btn-active transition-all bg-brand-pale text-brand-charcoal hover:bg-brand-pale border-0 font-bold px-8 py-6 text-lg">
-                <Phone size={22} className="text-brand-blue group-hover:scale-110 transition-transform" />
+              <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 py-6 text-lg rounded-2xl group gap-3 glass bg-white/50">
+                <Phone size={24} className="text-brand-teal group-hover:scale-110 transition-transform" />
                 Call Now
               </Button>
             </a>
@@ -82,7 +81,7 @@ export function HeroSection() {
              initial={{ opacity: 0, scale: 0.9 }}
              animate={{ opacity: 1, scale: 1 }}
              transition={{ duration: 0.5, delay: 0.6 }}
-             className="mt-16 inline-flex items-center gap-4 px-6 py-3 rounded-3xl shadow-clay bg-brand-pale"
+             className="mt-16 inline-flex items-center gap-5 px-8 py-4 rounded-3xl glass bg-white/70 shadow-soft border border-white/50"
           >
             <div className="flex -space-x-3">
               {[...Array(4)].map((_, i) => (

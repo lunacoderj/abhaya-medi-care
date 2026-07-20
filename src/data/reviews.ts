@@ -44,7 +44,7 @@ export const reviewsData: Review[] = [
   {
     id: "5",
     name: "Priya Reddy",
-    rating: 4,
+    rating: 5,
     text: "Advanced equipment and friendly technicians. Overall a very smooth experience.",
     date: "3 months ago",
     verified: true,

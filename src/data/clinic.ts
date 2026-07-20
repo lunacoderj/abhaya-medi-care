@@ -9,9 +9,9 @@ export const clinicData = {
     phoneDisplay: "0929089 3232",
     whatsapp: "+919290893232",
     email: "info@abhayamedicare.com",
-    address: "Sri Swamy Complex Building, Beside Apollo Pharmacy, Rythu Bazaar Road, Sector-3, MVP Colony, Visakhapatnam, Andhra Pradesh 530017",
-    mapLink: "https://maps.app.goo.gl/vq2CpvhgoqLYZ1348",
-    mapCoords: [17.7441, 83.3364], // approximate coordinates for MVP colony Visakhapatnam
+    address: "Plot No - 117, Rythu Bazaar Rd, MVP Sector 3, Sector 3, MVP Colony, Visakhapatnam, Andhra Pradesh 530017.",
+    mapLink: "https://maps.app.goo.gl/JF2bwY121mX8b7nV6",
+    mapCoords: [17.7414, 83.3353], // Coordinates for MVP Sector 3 Rythu Bazaar
   },
 
   workingHours: [

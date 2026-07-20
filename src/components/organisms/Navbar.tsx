@@ -35,10 +35,10 @@ export function Navbar() {
   const whatsappUrl = buildWhatsAppUrl(clinicData.contact.whatsapp, whatsappMessage);
 
   return (
-    <header 
+    <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-sm border-b border-brand-gray/10 py-3" : "bg-transparent py-5"
+        "fixed top-[2px] left-4 right-4 md:left-8 md:right-8 z-50 transition-all duration-300 rounded-2xl",
+        isScrolled ? "glass shadow-soft py-2" : "bg-transparent py-4"
       )}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -53,7 +53,7 @@ export function Navbar() {
             <ul className="flex items-center gap-6">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link 
+                  <Link
                     to={link.path}
                     className={cn(
                       "text-sm font-medium transition-colors hover:text-brand-blue",
@@ -71,7 +71,7 @@ export function Navbar() {
           </nav>
 
           {/* Mobile Menu Toggle */}
-          <button 
+          <button
             className="md:hidden p-2 text-brand-charcoal"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -82,15 +82,15 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-brand-gray/10 shadow-lg py-4 px-4 flex flex-col gap-4 animate-in slide-in-from-top-2">
-          <ul className="flex flex-col gap-4">
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-white/90 backdrop-blur-xl border border-brand-gray/10 rounded-2xl shadow-soft py-6 px-6 flex flex-col gap-6 animate-in slide-in-from-top-4">
+          <ul className="flex flex-col gap-5">
             {navLinks.map((link) => (
               <li key={link.path}>
-                <Link 
+                <Link
                   to={link.path}
                   className={cn(
-                    "block text-base font-medium",
-                    location.pathname === link.path ? "text-brand-blue" : "text-brand-charcoal"
+                    "block text-xl font-bold transition-colors",
+                    location.pathname === link.path ? "text-brand-blue" : "text-brand-charcoal hover:text-brand-blue"
                   )}
                 >
                   {link.label}
@@ -98,9 +98,9 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <div className="pt-4 border-t border-brand-gray/10">
+          <div className="pt-6 border-t border-brand-gray/10">
             <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-full">
-              <Button className="w-full">Book Appointment</Button>
+              <Button size="lg" className="w-full">Book Appointment</Button>
             </a>
           </div>
         </div>

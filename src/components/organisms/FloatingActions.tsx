@@ -3,6 +3,7 @@ import { Phone, MessageCircle, ArrowUp } from 'lucide-react';
 import { clinicData } from '../../data/clinic';
 import { buildWhatsAppUrl } from '../../lib/utils';
 import { cn } from '../../lib/utils';
+import { motion } from 'framer-motion';
 
 export function FloatingActions() {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,26 +42,42 @@ export function FloatingActions() {
         <ArrowUp size={20} />
       </button>
 
-      <div className="flex gap-3">
+      <div className="flex flex-col gap-4">
         {/* Phone Button */}
-        <a 
+        <motion.a 
           href={`tel:${clinicData.contact.phone}`}
-          className="bg-brand-blue text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.3 }}
+          className="bg-brand-blue text-white p-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 flex items-center justify-center relative overflow-hidden group"
           aria-label="Call Us"
         >
-          <Phone size={24} />
-        </a>
+          <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+          <Phone size={24} className="relative z-10" />
+          {/* Subtle pulse ring */}
+          <span className="absolute inset-0 rounded-full border border-brand-blue animate-ping opacity-20" />
+        </motion.a>
 
         {/* WhatsApp Button */}
-        <a 
+        <motion.a 
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ duration: 0.3, delay: 0.1 }}
+          className="bg-[#25D366] text-white p-4 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/20 flex items-center justify-center relative overflow-hidden group"
           aria-label="WhatsApp Us"
         >
-          <MessageCircle size={24} />
-        </a>
+          <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform rounded-full" />
+          <MessageCircle size={24} className="relative z-10" />
+          {/* Subtle pulse ring */}
+          <span className="absolute inset-0 rounded-full border border-[#25D366] animate-ping opacity-20" />
+        </motion.a>
       </div>
     </div>
   );

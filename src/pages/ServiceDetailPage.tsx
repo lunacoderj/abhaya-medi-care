@@ -192,9 +192,70 @@ export function ServiceDetailPage() {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.2 }}
                           >
-                            <div className="px-5 pb-5 pt-1 ml-9 text-brand-gray/90 leading-relaxed">
-                              {test.description}
-                            </div>
+                            {test.image ? (
+                              <div className="px-5 pb-5 pt-1 border-t border-brand-gray/10 mt-2">
+                                <div className="grid md:grid-cols-2 gap-8 items-start pt-6">
+                                  {/* Left: Image */}
+                                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-brand-gray/10">
+                                    <img 
+                                      src={test.image} 
+                                      alt={test.name} 
+                                      className="w-full h-auto object-contain rounded-xl mix-blend-multiply"
+                                    />
+                                  </div>
+                                  
+                                  {/* Right: Rich Details */}
+                                  <div className="space-y-6">
+                                    <div>
+                                      <h5 className="text-brand-teal font-bold uppercase tracking-wider text-xs mb-2">Description</h5>
+                                      <p className="text-brand-gray/90 leading-relaxed text-sm">
+                                        {test.description}
+                                      </p>
+                                    </div>
+                                    
+                                    {test.purpose && (
+                                      <div>
+                                        <h5 className="text-brand-teal font-bold uppercase tracking-wider text-xs mb-2">Purpose</h5>
+                                        <ul className="space-y-1">
+                                          {test.purpose.map((p, i) => (
+                                            <li key={i} className="flex items-start gap-2 text-sm text-brand-charcoal/80">
+                                              <span className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-1.5 shrink-0" />
+                                              {p}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    )}
+
+                                    <div className="grid grid-cols-2 gap-4">
+                                      {test.sampleRequired && (
+                                        <div className="bg-white p-3 rounded-xl border border-brand-gray/10">
+                                          <h5 className="text-brand-teal font-bold uppercase tracking-wider text-[10px] mb-1">Sample</h5>
+                                          <p className="text-sm font-medium text-brand-charcoal">{test.sampleRequired}</p>
+                                        </div>
+                                      )}
+                                      {test.reportTime && (
+                                        <div className="bg-white p-3 rounded-xl border border-brand-gray/10">
+                                          <h5 className="text-brand-teal font-bold uppercase tracking-wider text-[10px] mb-1">Report Time</h5>
+                                          <p className="text-sm font-medium text-brand-charcoal">{test.reportTime}</p>
+                                        </div>
+                                      )}
+                                    </div>
+
+                                    {test.preparation && (
+                                      <div className="bg-brand-blue/5 p-4 rounded-xl border border-brand-blue/10">
+                                        <h5 className="text-brand-blue font-bold uppercase tracking-wider text-xs mb-1">Preparation Required</h5>
+                                        <p className="text-sm text-brand-charcoal/90">{test.preparation}</p>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="px-5 pb-5 pt-1 ml-9 text-brand-gray/90 leading-relaxed">
+                                {test.description}
+                              </div>
+                            )}
                           </motion.div>
                         )}
                       </AnimatePresence>

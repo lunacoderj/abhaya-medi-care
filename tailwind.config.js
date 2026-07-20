@@ -8,24 +8,25 @@ export default {
     extend: {
       colors: {
         brand: {
-          blue: '#4facfe',
-          teal: '#00f2fe',
-          orange: '#ff0844',
-          charcoal: '#334155', // Softer charcoal for better clay contrast
-          gray: '#64748b',
-          light: '#f8fafc',
-          pale: '#e2e8f0', // Slightly darker pale for inset shadows to pop
+          blue: '#2563EB',     // Vibrant royal blue (Primary)
+          teal: '#0D9488',     // Deep, rich teal (Secondary)
+          orange: '#F97316',   // Bright, energetic orange (Accent)
+          charcoal: '#1E293B', // Dark slate for strong contrast
+          gray: '#64748B',     // Standard neutral gray
+          light: '#F8FAFC',    // Very light gray/blue for backgrounds
+          pale: '#F1F5F9',     // Slightly darker background for contrast
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'clay': '8px 8px 16px #cbd5e1, -8px -8px 16px #ffffff, inset 2px 2px 4px rgba(255, 255, 255, 0.5), inset -2px -2px 4px rgba(0, 0, 0, 0.05)',
-        'clay-card': '12px 12px 24px #cbd5e1, -12px -12px 24px #ffffff, inset 2px 2px 4px rgba(255,255,255,0.7), inset -2px -2px 4px rgba(0,0,0,0.03)',
-        'clay-btn': '6px 6px 12px #cbd5e1, -6px -6px 12px #ffffff, inset 1px 1px 2px rgba(255,255,255,0.8), inset -1px -1px 2px rgba(0,0,0,0.1)',
-        'clay-btn-active': 'inset 6px 6px 12px #cbd5e1, inset -6px -6px 12px #ffffff',
-        'clay-dark': '8px 8px 16px #0f172a, -8px -8px 16px #334155, inset 2px 2px 4px rgba(255, 255, 255, 0.1), inset -2px -2px 4px rgba(0, 0, 0, 0.3)',
+        // Modern, refined shadows
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+        'float': '0 20px 40px -20px rgba(0,0,0,0.1)',
+        'glow-blue': '0 0 20px rgba(37, 99, 235, 0.4)',
+        'glow-teal': '0 0 20px rgba(13, 148, 136, 0.4)',
       },
       animation: {
         'shimmer': 'shimmer 2s linear infinite',
