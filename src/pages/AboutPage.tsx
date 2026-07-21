@@ -48,9 +48,9 @@ export function AboutPage() {
               </p>
               
               <div className="flex flex-wrap gap-4">
-                <a href="#team">
+                <a href="/contact">
                   <Button size="lg" className="rounded-2xl px-8 shadow-soft">
-                    Meet Our Team
+                    Contact Us
                   </Button>
                 </a>
               </div>
@@ -197,45 +197,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Meet the Team */}
-      <section id="team" className="py-24 bg-white">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-brand-charcoal mb-6 tracking-tight">Meet Our Experts</h2>
-            <p className="text-xl text-brand-charcoal/70 leading-relaxed">Dedicated professionals committed to delivering precise and reliable diagnostic results.</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {aboutContent.team.map((member, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative rounded-[2rem] overflow-hidden bg-brand-light shadow-soft hover:shadow-float transition-all duration-300"
-              >
-                <div className="aspect-square overflow-hidden relative">
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/90 via-brand-charcoal/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  
-                  <div className="absolute bottom-0 left-0 w-full p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-brand-teal font-bold tracking-wider uppercase text-sm mb-1">{member.role}</p>
-                    <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
-                    <p className="text-white/80 text-sm mb-4">{member.qualifications}</p>
-                    <p className="text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 line-clamp-3">{member.bio}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <StatsSection />
     </>
