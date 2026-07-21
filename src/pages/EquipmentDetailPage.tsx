@@ -29,7 +29,7 @@ export function EquipmentDetailPage() {
     <>
       <Helmet>
         <title>{equipment.name} | Abhaya Medicare Equipment</title>
-        <meta name="description" content={equipment.description} />
+        <meta name="description" content={equipment.overview} />
       </Helmet>
 
       {/* Hero Image Section */}
@@ -57,13 +57,13 @@ export function EquipmentDetailPage() {
             transition={{ duration: 0.5 }}
           >
             <Badge variant="secondary" className="mb-4 bg-brand-teal text-brand-charcoal hover:bg-brand-teal">
-              {equipment.category}
+              Diagnostic Equipment
             </Badge>
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">
               {equipment.name}
             </h1>
             <p className="text-xl text-gray-300">
-              {equipment.manufacturer} {equipment.model}
+              {equipment.purpose}
             </p>
           </motion.div>
         </div>
@@ -82,7 +82,7 @@ export function EquipmentDetailPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
               >
                 <h2 className="text-2xl font-bold text-brand-charcoal mb-4">Overview</h2>
-                <p className="text-brand-gray text-lg leading-relaxed">{equipment.description}</p>
+                <p className="text-brand-gray text-lg leading-relaxed">{equipment.overview}</p>
               </motion.div>
 
               <motion.div
@@ -90,16 +90,9 @@ export function EquipmentDetailPage() {
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.5, delay: 0.2 }}
               >
-                <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Technical Specifications</h2>
-                <div className="bg-white rounded-2xl border border-brand-gray/10 overflow-hidden shadow-sm">
-                  <div className="divide-y divide-brand-gray/10">
-                    {Object.entries(equipment.specs).map(([key, value], idx) => (
-                      <div key={idx} className="flex flex-col sm:flex-row sm:items-center p-4 hover:bg-brand-pale/50 transition-colors">
-                        <div className="w-full sm:w-1/3 text-brand-gray font-medium mb-1 sm:mb-0">{key}</div>
-                        <div className="w-full sm:w-2/3 text-brand-charcoal font-semibold">{value}</div>
-                      </div>
-                    ))}
-                  </div>
+                <h2 className="text-2xl font-bold text-brand-charcoal mb-6">How It Works</h2>
+                <div className="bg-white rounded-2xl border border-brand-gray/10 overflow-hidden shadow-sm p-6">
+                  <p className="text-brand-gray text-lg leading-relaxed">{equipment.howItWorks}</p>
                 </div>
               </motion.div>
 
@@ -126,11 +119,11 @@ export function EquipmentDetailPage() {
                  animate={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.5, delay: 0.4 }}
               >
-                <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Tests Performed</h2>
+                <h2 className="text-2xl font-bold text-brand-charcoal mb-6">Common Uses</h2>
                 <div className="flex flex-wrap gap-3">
-                  {equipment.testsPerformed.map((test, idx) => (
+                  {equipment.commonUses.map((use, idx) => (
                     <Link key={idx} to="/services" className="bg-white px-4 py-2.5 rounded-lg border border-brand-gray/10 shadow-sm font-medium text-brand-blue hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all flex items-center gap-2 group">
-                      {test}
+                      {use}
                       <ChevronRight size={16} className="text-brand-gray/50 group-hover:text-white transition-colors" />
                     </Link>
                   ))}
@@ -152,7 +145,7 @@ export function EquipmentDetailPage() {
                   <div className="bg-gradient-to-br from-brand-blue to-brand-teal p-6 text-center text-white relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                     <Badge variant="outline" className="mb-3 bg-white/20 border-white/30 text-white backdrop-blur-sm">Accuracy</Badge>
-                    <div className="text-5xl font-bold mb-2 tracking-tight">{equipment.accuracyRating}</div>
+                    <div className="text-5xl font-bold mb-2 tracking-tight">99.9%</div>
                     <div className="text-white/80 font-medium">Diagnostic Precision</div>
                   </div>
                   
@@ -190,7 +183,7 @@ export function EquipmentDetailPage() {
                           </div>
                           <div>
                             <h4 className="font-semibold text-sm text-brand-charcoal group-hover:text-brand-blue transition-colors line-clamp-1">{item.name}</h4>
-                            <p className="text-xs text-brand-gray">{item.category}</p>
+                            <p className="text-xs text-brand-gray">Diagnostic Equipment</p>
                           </div>
                         </Link>
                     ))}
