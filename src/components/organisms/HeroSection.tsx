@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { motion } from 'framer-motion';
 import { Button } from '../atoms/Button';
 import { Badge } from '../atoms/Badge';
 import { Shield, MessageCircle, Phone, Activity, HeartPulse, TestTube } from 'lucide-react';
@@ -69,6 +70,52 @@ export function HeroSection() {
           <img src="/mobile-version-bg.png" alt="Abhaya Medicare Hero Background" className="w-full h-full object-cover" />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/40 sm:bg-none sm:bg-gradient-to-r sm:from-white/90 sm:via-white/70 sm:to-transparent"></div>
+      </div>
+
+      {/* EKG Pulse Line Animation (Full Width, Mobile & Desktop) */}
+      <div className="absolute bottom-0 left-0 w-full h-24 sm:h-32 z-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-70 translate-y-2">
+        <svg viewBox="0 0 1000 100" preserveAspectRatio="none" className="w-full h-full">
+          <motion.path 
+            d="M 0,50 L 150,50 L 160,50 L 175,20 L 195,95 L 210,35 L 225,50 L 500,50 L 510,50 L 525,20 L 545,95 L 560,35 L 575,50 L 850,50 L 860,50 L 875,20 L 895,95 L 910,35 L 925,50 L 1000,50" 
+            fill="none" 
+            stroke="#CD0000" 
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ 
+              pathLength: [0, 1], 
+              opacity: [0, 1, 1, 0] 
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              times: [0, 0.2, 0.8, 1]
+            }}
+          />
+          {/* Secondary ghost line for glow effect */}
+          <motion.path 
+            d="M 0,50 L 150,50 L 160,50 L 175,20 L 195,95 L 210,35 L 225,50 L 500,50 L 510,50 L 525,20 L 545,95 L 560,35 L 575,50 L 850,50 L 860,50 L 875,20 L 895,95 L 910,35 L 925,50 L 1000,50" 
+            fill="none" 
+            stroke="#CD0000" 
+            strokeWidth="8"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="blur-sm opacity-50"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ 
+              pathLength: [0, 1], 
+              opacity: [0, 0.5, 0.5, 0] 
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity, 
+              ease: "easeInOut",
+              times: [0, 0.2, 0.8, 1]
+            }}
+          />
+        </svg>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-20">
