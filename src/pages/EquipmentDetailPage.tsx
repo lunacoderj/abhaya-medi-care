@@ -61,7 +61,7 @@ export function EquipmentDetailPage() {
               className="max-w-2xl"
             >
               <div className="flex flex-wrap gap-3 mb-6">
-                <Badge variant="secondary" className="bg-brand-teal text-white border-0 px-4 py-1.5">
+                <Badge variant="outline" className="bg-brand-teal text-white border-0 px-4 py-1.5">
                   {equipment.category}
                 </Badge>
                 <Badge variant="outline" className="text-brand-gold border-brand-gold/30 px-4 py-1.5 bg-black/20">

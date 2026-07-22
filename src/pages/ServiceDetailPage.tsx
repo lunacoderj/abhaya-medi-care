@@ -253,7 +253,7 @@ export function ServiceDetailPage() {
             
             <div className="grid grid-cols-1 gap-8">
               {(service.tests || []).map((test, idx) => {
-                const RandomIcon = ["Microscope", "Activity", "HeartPulse", "TestTube", "Droplets"][idx % 5] as IconName;
+                const RandomIcon = ["Microscope", "Activity", "HeartPulse", "TestTube", "Droplets"][idx % 5] as any;
                 return (
                   <motion.div 
                     key={idx}
