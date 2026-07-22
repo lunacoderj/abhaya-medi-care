@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '../atoms/Card';
 import { Icon } from '../atoms/Icon';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 import { type Service } from '../../data/services';
 import { Link } from 'react-router-dom';
 
@@ -11,38 +11,52 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   return (
-    <Link to={`/services/${service.id}`} className="block h-full">
+    <Link to={`/services/${service.id}`} className="block h-full group">
       <Card 
-        className="group h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-brand-teal/30"
+        variant="glass"
+        hover={true}
+        className="relative h-full overflow-hidden flex flex-col p-0 border border-white/40 shadow-soft-xl rounded-2xl bg-white"
       >
-        <div className="flex flex-col h-full">
-          {/* Top Section */}
-          <div className="flex items-start gap-4 mb-4">
-            <div className="bg-brand-pale text-brand-blue p-3 rounded-lg group-hover:bg-brand-blue group-hover:text-white transition-colors">
-              <Icon name={service.iconName} size={24} />
+        {/* Image Header */}
+        <div className="relative h-56 w-full overflow-hidden bg-brand-charcoal">
+          {service.image && (
+            <img 
+              src={service.image} 
+              alt={service.name} 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/90 via-brand-charcoal/30 to-transparent" />
+          
+          <div className="absolute bottom-4 left-5 right-5 flex items-end gap-4">
+            <div className="bg-white/10 backdrop-blur-lg text-brand-gold p-3 rounded-xl shadow-lg border border-white/20 group-hover:bg-brand-gold group-hover:text-white transition-colors duration-300">
+              <Icon name={service.iconName} size={28} />
             </div>
-            <div>
-              <h4 className="text-lg font-bold text-brand-charcoal leading-tight mb-1 group-hover:text-brand-blue transition-colors">
-                {service.name}
-              </h4>
-              <p className="text-sm text-brand-gray line-clamp-2">
-                {service.description}
-              </p>
-            </div>
+            <h4 className="text-2xl font-serif font-bold text-white leading-tight flex-1 drop-shadow-md pb-1">
+              {service.name}
+            </h4>
           </div>
+        </div>
 
-          {/* Middle Section - Tests preview */}
+        {/* Content Section */}
+        <div className="p-6 flex flex-col flex-1">
+          <p className="text-sm text-brand-charcoal/80 line-clamp-2 mb-5 font-medium leading-relaxed">
+            {service.description}
+          </p>
+
+          {/* Tests preview */}
           <div className="flex-1 mb-6">
-            <p className="text-xs font-semibold text-brand-gray/70 uppercase tracking-wider mb-2">Includes tests like:</p>
-            <ul className="space-y-1">
-              {service.tests.slice(0, 3).map((test, idx) => (
-                <li key={idx} className="text-sm text-brand-gray flex items-start gap-2">
-                  <span className="text-brand-teal mt-0.5">•</span>
-                  <span className="line-clamp-1">{test.name}</span>
+            <div className="w-8 h-1 bg-brand-gold/30 mb-4 rounded-full group-hover:w-16 group-hover:bg-brand-gold transition-all duration-300" />
+            <p className="text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-3">Key Tests:</p>
+            <ul className="space-y-2">
+              {service.tests?.slice(0, 3).map((test, idx) => (
+                <li key={idx} className="text-sm text-brand-charcoal flex items-start gap-2">
+                  <span className="text-brand-teal mt-0.5">✦</span>
+                  <span className="line-clamp-1 font-medium">{test.name}</span>
                 </li>
               ))}
-              {service.tests.length > 3 && (
-                <li className="text-xs text-brand-gray/60 italic pl-3 mt-1">
+              {service.tests && service.tests.length > 3 && (
+                <li className="text-xs font-bold text-brand-blue mt-2 inline-flex items-center gap-1">
                   + {service.tests.length - 3} more tests
                 </li>
               )}
@@ -50,9 +64,19 @@ export function ServiceCard({ service }: ServiceCardProps) {
           </div>
 
           {/* Bottom Section */}
-          <div className="mt-auto pt-4 border-t border-brand-gray/10 flex items-center justify-between text-brand-blue font-semibold text-sm">
-            <span>More Details</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          <div className="mt-auto pt-4 border-t border-brand-charcoal/10 overflow-hidden relative h-14">
+            <div className="absolute inset-0 flex items-center justify-between font-semibold text-sm transition-transform duration-300 transform group-hover:-translate-y-12 text-brand-charcoal">
+              <span className="flex items-center gap-2">
+                <Clock size={16} className="text-brand-teal" /> 
+                {service.turnaroundTime}
+              </span>
+              <ArrowRight size={18} className="text-brand-gold" />
+            </div>
+            
+            <div className="absolute inset-0 flex items-center justify-between text-white font-bold text-sm bg-brand-charcoal px-5 rounded-xl transition-all duration-300 transform translate-y-12 group-hover:translate-y-0 shadow-md">
+              <span>View Details</span>
+              <ArrowRight size={18} className="animate-pulse-subtle text-brand-gold" />
+            </div>
           </div>
         </div>
       </Card>

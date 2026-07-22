@@ -8,9 +8,6 @@ import { SocialLinks } from '../molecules/SocialLinks';
 export function Footer() {
   const currentYear = new Date().getFullYear();
   
-  // Get first 5 services for the footer
-  const footerServices = servicesData.slice(0, 5).map(s => s.name);
-
   return (
     <footer className="bg-brand-charcoal text-brand-light pt-16 pb-8 border-t-[6px] border-brand-teal">
       <div className="container mx-auto px-4 md:px-6">
@@ -35,14 +32,20 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['Home', 'About Us', 'Services', 'Equipment', 'Contact'].map((item) => (
-                <li key={item}>
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'About Us', path: '/about' },
+                { name: 'Services', path: '/services' },
+                { name: 'Equipment', path: '/equipment' },
+                { name: 'Contact', path: '/contact' }
+              ].map((item) => (
+                <li key={item.name}>
                   <Link 
-                    to={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
+                    to={item.path}
                     className="text-gray-400 hover:text-brand-teal transition-colors text-sm flex items-center gap-2 group"
                   >
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -53,14 +56,14 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6">Our Services</h4>
             <ul className="space-y-3">
-              {footerServices.map((service) => (
-                <li key={service}>
+              {servicesData.slice(0, 5).map((service) => (
+                <li key={service.id}>
                   <Link 
-                    to="/services"
+                    to={`/services/${service.id}`}
                     className="text-gray-400 hover:text-brand-teal transition-colors text-sm flex items-center gap-2 group capitalize"
                   >
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                    {service.toLowerCase()}
+                    {service.name.toLowerCase()}
                   </Link>
                 </li>
               ))}

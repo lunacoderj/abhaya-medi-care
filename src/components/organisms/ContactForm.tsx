@@ -51,7 +51,7 @@ Message: ${data.message}`;
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 bg-brand-pale p-6 md:p-8 rounded-3xl shadow-clay-card border-0">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <FormField
         label="Full Name"
         placeholder="Enter your full name"
@@ -60,7 +60,7 @@ Message: ${data.message}`;
         {...register('name')}
       />
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <FormField
           label="Mobile Number"
           type="tel"
@@ -88,7 +88,7 @@ Message: ${data.message}`;
         {...register('message')}
       />
 
-      <div className="pt-2 flex flex-col sm:flex-row items-center gap-4">
+      <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
         <Button 
           type="submit" 
           size="lg" 
@@ -97,7 +97,7 @@ Message: ${data.message}`;
         >
           Send via WhatsApp
         </Button>
-        <span className="text-sm text-brand-gray text-center sm:text-left">
+        <span className="text-sm text-brand-gray/80 text-center sm:text-left font-medium">
           We usually reply within 5 minutes.
         </span>
       </div>

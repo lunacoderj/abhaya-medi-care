@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { seoData } from '../data/seo';
 import { HeroSection } from '../components/organisms/HeroSection';
 import { StatsSection } from '../components/organisms/StatsSection';
+import { InteractiveSymptomChecker } from '../components/organisms/InteractiveSymptomChecker';
 import { ServicesGrid } from '../components/organisms/ServicesGrid';
 import { EquipmentGrid } from '../components/organisms/EquipmentGrid';
 import { GalleryBento } from '../components/organisms/GalleryBento';
@@ -27,9 +28,12 @@ export function HomePage() {
 
       <HeroSection />
       <StatsSection />
+      
+      {/* Interactive Symptom Mapper */}
+      <InteractiveSymptomChecker />
 
       {/* About Preview */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-32 bg-brand-white overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div 
@@ -39,19 +43,16 @@ export function HomePage() {
               transition={{ duration: 0.6 }}
               className="relative w-full aspect-square md:aspect-auto md:h-[550px] flex items-center justify-center"
             >
-              <div className="absolute inset-0 bg-brand-teal/10 blur-[80px] rounded-full mix-blend-multiply" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] border border-brand-teal/20 rounded-full animate-[spin_20s_linear_infinite] border-dashed" />
-              
-              <motion.div className="relative z-10 w-full h-full max-w-[90%] max-h-[90%]">
-                <div className="w-full h-full rounded-[40px] overflow-hidden border-8 border-white bg-white shadow-float relative group [mask-image:url('data:image/svg+xml;utf8,<svg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22><path fill=%22%23000%22 d=%22M45.7,-76.4C58.9,-69.3,69.2,-55.5,76.5,-41.1C83.8,-26.6,88.1,-11.5,86.2,3.1C84.3,17.7,76.1,31.7,66.3,43.2C56.4,54.7,44.9,63.7,31.4,70.9C17.9,78.2,2.4,83.7,-12.3,81.9C-27,80.2,-41,71.2,-53.4,60.2C-65.7,49.2,-76.5,36.2,-81.9,21.1C-87.3,6,-87.3,-11.2,-81.3,-26.1C-75.3,-41.1,-63.3,-53.9,-50,-61.2C-36.6,-68.5,-21.8,-70.3,-5.7,-71.4C10.5,-72.5,21,-73,32.5,-83.5C44.1,-94.1,45.7,-76.4,45.7,-76.4Z%22 transform=%22translate(100 100)%22 /></svg>')] [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]">
+              <div className="relative z-10 w-full h-full max-w-[90%] max-h-[90%]">
+                <div className="w-full h-full rounded-2xl overflow-hidden shadow-soft-xl relative group border border-black/5">
                   <img 
                     src="/hero.png" 
                     alt="Abhaya Medicare Facility" 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
+                    className="w-full h-full object-cover transform group-hover:scale-[1.03] transition-transform duration-1000"
                     loading="lazy"
                   />
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
             
             <motion.div
@@ -81,12 +82,12 @@ export function HomePage() {
       </section>
 
       {/* Services Preview */}
-      <section className="py-20 bg-white">
+      <section className="py-32 bg-brand-light">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div className="max-w-2xl">
-              <h4 className="text-brand-teal font-semibold tracking-wider mb-2 uppercase text-sm">Our Services</h4>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal">
+              <h4 className="text-brand-teal font-medium tracking-widest mb-3 uppercase text-xs">Our Services</h4>
+              <h2 className="text-4xl md:text-5xl font-serif text-brand-charcoal">
                 Comprehensive Diagnostic Solutions
               </h2>
             </div>
@@ -97,16 +98,16 @@ export function HomePage() {
               </Button>
             </Link>
           </div>
-          <ServicesGrid preview />
+          <ServicesGrid limit={6} />
         </div>
       </section>
 
       {/* Equipment Showcase */}
-      <section className="py-20 bg-brand-pale">
+      <section className="py-32 bg-brand-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h4 className="text-brand-teal font-semibold tracking-wider mb-2 uppercase text-sm">Advanced Technology</h4>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal mb-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h4 className="text-brand-teal font-medium tracking-widest mb-3 uppercase text-xs">Advanced Technology</h4>
+            <h2 className="text-4xl md:text-5xl font-serif text-brand-charcoal mb-6">
               State-of-the-Art Equipment
             </h2>
             <p className="text-brand-gray text-lg">
@@ -126,11 +127,11 @@ export function HomePage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-20 bg-white">
+      <section className="py-32 bg-brand-light">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h4 className="text-brand-teal font-semibold tracking-wider mb-2 uppercase text-sm">Our Facility</h4>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h4 className="text-brand-teal font-medium tracking-widest mb-3 uppercase text-xs">Our Facility</h4>
+            <h2 className="text-4xl md:text-5xl font-serif text-brand-charcoal">
               Take a Look Inside
             </h2>
           </div>
@@ -139,11 +140,11 @@ export function HomePage() {
       </section>
 
       {/* Reviews Section */}
-      <section className="py-20 bg-brand-light overflow-hidden">
+      <section className="py-32 bg-brand-white overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h4 className="text-brand-teal font-semibold tracking-wider mb-2 uppercase text-sm">Testimonials</h4>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-charcoal">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h4 className="text-brand-teal font-medium tracking-widest mb-3 uppercase text-xs">Testimonials</h4>
+            <h2 className="text-4xl md:text-5xl font-serif text-brand-charcoal">
               What Our Patients Say
             </h2>
           </div>
@@ -152,25 +153,24 @@ export function HomePage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-brand-charcoal relative overflow-hidden">
-        <div className="absolute inset-0 bg-brand-blue/20"></div>
+      <section className="py-32 bg-brand-blue relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto glass p-10 md:p-14 rounded-3xl border-white/10 shadow-2xl"
+            className="max-w-4xl mx-auto flex flex-col items-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">
               Ready for Your Diagnostic Journey?
             </h2>
-            <p className="text-lg text-gray-200 mb-10">
-              Schedule your appointment today and get your results within 24 hours.
+            <p className="text-xl text-white/80 mb-12 font-light max-w-2xl text-balance">
+              Schedule your appointment today and get your results within 24 hours. Experience healthcare designed around you.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                <Button size="lg" className="w-full bg-white text-brand-blue hover:bg-brand-light shadow-xl">
+                <Button size="lg" className="w-full bg-white text-brand-blue hover:bg-brand-light shadow-xl border-none">
                   Book Appointment
                 </Button>
               </a>

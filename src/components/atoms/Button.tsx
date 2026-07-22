@@ -4,25 +4,25 @@ import { cn } from '../../lib/utils';
 import { Loader2 } from 'lucide-react';
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-xl text-sm font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue disabled:pointer-events-none disabled:opacity-50 active:scale-95",
+  "inline-flex items-center justify-center font-medium transition-all duration-500 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold disabled:pointer-events-none disabled:opacity-50 group tracking-wide",
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-brand-blue to-brand-teal text-white shadow-soft hover:shadow-glow-blue hover:-translate-y-0.5 border-0",
-        secondary: "bg-gradient-to-r from-brand-orange to-red-500 text-white shadow-soft hover:-translate-y-0.5 border-0",
-        outline: "bg-white text-brand-charcoal shadow-soft border border-brand-gray/20 hover:border-brand-blue hover:text-brand-blue hover:-translate-y-0.5",
-        ghost: "hover:bg-brand-pale text-brand-charcoal hover:text-brand-blue shadow-none",
-        link: "text-brand-blue underline-offset-4 hover:underline shadow-none",
+        primary: "bg-brand-charcoal text-white hover:bg-brand-charcoal/90 hover:shadow-soft-xl border border-transparent",
+        secondary: "bg-brand-blue text-white hover:bg-brand-blue/90 hover:shadow-soft-xl border border-transparent",
+        ghost: "bg-transparent text-brand-charcoal border border-brand-gray/30 hover:border-brand-gold hover:text-brand-gold shadow-none",
+        danger: "bg-red-50 text-red-600 hover:bg-red-100 hover:shadow-soft-xl border border-red-100",
+        outline: "bg-transparent text-brand-charcoal border border-brand-charcoal/20 hover:border-brand-charcoal hover:bg-brand-charcoal/5",
       },
       size: {
-        default: "h-11 px-5 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-12 rounded-lg px-8 text-base",
-        icon: "h-10 w-10",
+        default: "h-12 px-8 text-sm rounded-full",
+        sm: "h-10 px-6 text-xs rounded-full",
+        lg: "h-14 px-10 text-base rounded-full",
+        icon: "h-12 w-12 rounded-full",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "primary",
       size: "default",
     },
   }
@@ -32,10 +32,12 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   isLoading?: boolean;
+  icon?: React.ReactNode;
+  iconPosition?: 'left' | 'right';
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, isLoading, children, ...props }, ref) => {
+  ({ className, variant, size, isLoading, icon, iconPosition = 'left', children, ...props }, ref) => {
     return (
       <button
         className={cn(buttonVariants({ variant, size, className }))}
@@ -44,7 +46,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+        {!isLoading && icon && iconPosition === 'left' && (
+          <span className="mr-2 group-hover:scale-110 transition-transform">{icon}</span>
+        )}
         {children}
+        {!isLoading && icon && iconPosition === 'right' && (
+          <span className="ml-2 group-hover:scale-110 transition-transform">{icon}</span>
+        )}
       </button>
     );
   }

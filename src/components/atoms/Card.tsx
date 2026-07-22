@@ -3,13 +3,13 @@ import { cn } from '../../lib/utils';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const cardVariants = cva(
-  "rounded-3xl overflow-hidden transition-all duration-300",
+  "rounded-xl overflow-hidden transition-all duration-500 bg-white",
   {
     variants: {
       variant: {
-        default: "bg-white shadow-soft border border-brand-gray/10",
-        elevated: "bg-white shadow-float border border-brand-gray/10",
-        clay: "bg-white shadow-soft border border-brand-gray/10", // Kept class name for compatibility, updated style
+        default: "shadow-clay-light border border-black/5",
+        elevated: "shadow-soft border border-black/5",
+        gradient: "bg-gradient-to-br from-brand-light to-white border border-brand-gold/20",
         glass: "glass",
         glassDark: "glass-dark",
       },
@@ -18,6 +18,7 @@ const cardVariants = cva(
         sm: "p-4",
         md: "p-6",
         lg: "p-8",
+        xl: "p-10",
       }
     },
     defaultVariants: {
@@ -29,14 +30,20 @@ const cardVariants = cva(
 
 export interface CardProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {}
+    VariantProps<typeof cardVariants> {
+  hover?: boolean;
+}
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, padding, ...props }, ref) => {
+  ({ className, variant, padding, hover = false, ...props }, ref) => {
     return (
       <div
         ref={ref}
-        className={cn(cardVariants({ variant, padding, className }))}
+        className={cn(
+          cardVariants({ variant, padding }), 
+          hover && (variant === 'glass' ? 'glass-hover' : 'hover:-translate-y-1 hover:shadow-soft-xl border border-transparent hover:border-brand-gold/20'),
+          className
+        )}
         {...props}
       />
     );
